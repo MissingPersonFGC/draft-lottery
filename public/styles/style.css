@@ -131,6 +131,49 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-.container {
-  max-width: 900px;
+header {
+  text-align: center; }
+
+body {
+  background: #ddd;
+  color: #033; }
+
+button, input[type=submit] {
+  background: #999;
+  color: #033;
+  border: 1px solid #699;
+  padding: 5px 15px;
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease; }
+  button:hover, input[type=submit]:hover {
+    -webkit-box-shadow: 5px 5px 5px 0px #033;
+            box-shadow: 5px 5px 5px 0px #033; }
+
+h1, h2, h3 {
+  color: #f33; }
+
+ul li {
+  list-style-type: none;
+  list-style-position: inside; }
+
+ul {
+  padding: 0; }
+
+input[type=text] {
+  margin-top: 20px;
+  margin-bottom: 16px;
+  background: #d0d0d0;
+  border: 1px solid #f33;
+  color: #033;
+  padding: 5px 15px; }
+
+main {
+  width: 70%;
   margin: 0 auto; }
+  main .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; }
+  main .teams {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); }

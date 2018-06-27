@@ -8,7 +8,7 @@ var num = 1;
 var $playerAdd = $("#player-add");
 var $newPlayer = $("#new-player");
 var $playerPoolList = $("#player-pool ul");
-var $teamGeneratorBtn = $(".team-generator button");
+var $teamGeneratorBtn = $("button");
 var $teams = $(".teams");
 
 app.init = function () {

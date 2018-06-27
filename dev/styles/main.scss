@@ -1,6 +1,60 @@
 @import 'setup';
 
-.container {
-	max-width: 900px;
+header {
+	text-align: center;
+}
+
+body {
+	background: #ddd;
+	color: #033;
+}
+
+button, input[type=submit] {
+	background: #999;
+	color: #033;
+	border: 1px solid #699;
+	padding: 5px 15px;
+	transition: all 0.1s ease;
+
+	&:hover {
+		box-shadow: 5px 5px 5px 0px #033;
+	}
+}
+
+h1, h2, h3 {
+	color: #f33;
+}
+
+ul li {
+	list-style-type: none;
+	list-style-position: inside;
+}
+
+ul {
+	padding: 0;
+}
+
+input[type=text] {
+	margin-top: 20px;
+	margin-bottom: 16px;
+	background: darken(#ddd, 5);
+	border: 1px solid #f33;
+	color: #033;
+	padding: 5px 15px;
+}
+
+main {
+	width: 70%;
 	margin: 0 auto;
+
+	.container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.teams {
+		margin-top: 30px;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+	}
 }

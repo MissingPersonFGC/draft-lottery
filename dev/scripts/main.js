@@ -6,7 +6,7 @@ let num = 1;
 const $playerAdd = $(`#player-add`);
 const $newPlayer = $(`#new-player`);
 const $playerPoolList = $(`#player-pool ul`);
-const $teamGeneratorBtn = $(`.team-generator button`);
+const $teamGeneratorBtn = $(`button`);
 const $teams = $(`.teams`);
 
 app.init = () => {
