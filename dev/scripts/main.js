@@ -1,11 +1,13 @@
 const app = {};
 
 const playerPool = [];
+let num = 1;
 
 const $playerAdd = $(`#player-add`);
 const $newPlayer = $(`#new-player`);
 const $playerPoolList = $(`#player-pool ul`);
 const $teamGeneratorBtn = $(`.team-generator button`);
+const $teams = $(`.teams`);
 
 app.init = () => {
     app.getNewPlayer();
@@ -38,7 +40,6 @@ app.populatePlayerPool = () => {
 app.createTeamArray = () => {
     $teamGeneratorBtn.on(`click`, (e) => {
         e.preventDefault();
-        let num = 1;
         if (!app[`teamArray${num}`]) {
             app[`teamArray${num}`] = [];
             app.assignPlayer(app[`teamArray${num}`]);
@@ -62,6 +63,22 @@ app.assignPlayer = (team) => {
     const randomPlayer = playerPool[Math.floor(Math.random() * playerPool.length)];
     team.push(randomPlayer);
     app.removePlayerFromPool(randomPlayer);
+    app.populateTeams();
+}
+
+app.populateTeams = () => {
+    $teams.empty();
+    for (let i = 1; i < 101; i++) {
+        if (app[`teamArray${i}`]) {
+            const $teamArray = `team-array${i}`;
+            $teams.append(`<div class="${$teamArray}"><h3>Team #${i}</h3><ul></ul></div>`);
+            app[`teamArray${i}`].forEach((player) => {
+                $(`.${$teamArray} ul`).append(`
+                    <li>${player}</li>
+                `);
+            });
+        }
+    }
 }
 
 $(app.init);

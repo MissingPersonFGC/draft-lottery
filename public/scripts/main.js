@@ -3,11 +3,13 @@
 var app = {};
 
 var playerPool = [];
+var num = 1;
 
 var $playerAdd = $("#player-add");
 var $newPlayer = $("#new-player");
 var $playerPoolList = $("#player-pool ul");
 var $teamGeneratorBtn = $(".team-generator button");
+var $teams = $(".teams");
 
 app.init = function () {
     app.getNewPlayer();
@@ -38,7 +40,6 @@ app.populatePlayerPool = function () {
 app.createTeamArray = function () {
     $teamGeneratorBtn.on("click", function (e) {
         e.preventDefault();
-        var num = 1;
         if (!app["teamArray" + num]) {
             app["teamArray" + num] = [];
             app.assignPlayer(app["teamArray" + num]);
@@ -62,6 +63,22 @@ app.assignPlayer = function (team) {
     var randomPlayer = playerPool[Math.floor(Math.random() * playerPool.length)];
     team.push(randomPlayer);
     app.removePlayerFromPool(randomPlayer);
+    app.populateTeams();
+};
+
+app.populateTeams = function () {
+    $teams.empty();
+    for (var i = 1; i < 101; i++) {
+        if (app["teamArray" + i]) {
+            (function () {
+                var $teamArray = "team-array" + i;
+                $teams.append("<div class=\"" + $teamArray + "\"><h3>Team #" + i + "</h3><ul></ul></div>");
+                app["teamArray" + i].forEach(function (player) {
+                    $("." + $teamArray + " ul").append("\n                    <li>" + player + "</li>\n                ");
+                });
+            })();
+        }
+    }
 };
 
 $(app.init);
