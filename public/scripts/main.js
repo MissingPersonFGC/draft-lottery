@@ -38,31 +38,30 @@ app.populatePlayerPool = function () {
 app.createTeamArray = function () {
     $teamGeneratorBtn.on("click", function (e) {
         e.preventDefault();
-        // Create number for array ending
-        // Check to see if the array ending in that number has been created
-        // If it hasn't create the array, then grab a random player from the Player Pool.
-        // Add that player to the new array.
-        // If that array has been created, check to see if its length is < 3.
-        // If it is, push that player to the existing array.
-        // If it's 3, then increase the increment of the number, then create a new array with that number, and push the player to that array.
         var num = 1;
         if (!app["teamArray" + num]) {
             app["teamArray" + num] = [];
-            var randomPlayer = playerPool[Math.floor(Math.random() * playerPool.length)];
-            app["teamArray" + num].push(randomPlayer);
-            console.log(randomPlayer);
+            app.assignPlayer(app["teamArray" + num]);
         } else if (app["teamArray" + num] && app["teamArray" + num].length < 3) {
-            var _randomPlayer = playerPool[Math.floor(Math.random() * playerPool.length)];
-            app["teamArray" + num].push(_randomPlayer);
-            console.log(_randomPlayer);
+            app.assignPlayer(app["teamArray" + num]);
         } else {
             num++;
             app["teamArray" + num] = [];
-            var _randomPlayer2 = playerPool[Math.floor(Math.random() * playerPool.length)];
-            app["teamArray" + num].push(_randomPlayer2);
-            console.log(_randomPlayer2);
+            app.assignPlayer(app["teamArray" + num]);
         }
     });
+};
+
+app.removePlayerFromPool = function (player) {
+    var playerIndex = playerPool.indexOf(player);
+    playerPool.splice(playerIndex, 1);
+    app.populatePlayerPool();
+};
+
+app.assignPlayer = function (team) {
+    var randomPlayer = playerPool[Math.floor(Math.random() * playerPool.length)];
+    team.push(randomPlayer);
+    app.removePlayerFromPool(randomPlayer);
 };
 
 $(app.init);
