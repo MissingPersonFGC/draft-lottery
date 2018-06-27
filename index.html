@@ -9,8 +9,36 @@
 </head>
 <body>
 
-	<h1>Hello World!</h1>
+	<!-- Container for all players, to be changed when someone is grabbed by a team -->
+	<!-- Text input to get input a new player -->
+	<!-- Submit button for adding new player -->
+	<!-- Button to randomly grab player from draft pull -->
+	<!-- Container for all teams -->
+	<header>
+		<h1>Draft Lottery</h1>
+	</header>
+	<main>
+		<section class="player-container">
+			<div id="player-pool">
+				<h2>Player Pool:</h2>
+				<ul></ul>
+			</div>
+		</section>
+		<section class="player-add-form">
+			<form id="player-add">
+				<input type="text" name="new-player" id="new-player">
+				<input type="submit" value="Add New Player">
+			</form>
+		</section>
+		<section class="team-generator">
+			<button>Get a player!</button>
+		</section>
+		<section class="teams">
 
+		</section>
+	</main>
+
+	<script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
 	<script src="public/scripts/main.js"></script>
 </body>
 </html>
