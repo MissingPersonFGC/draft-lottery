@@ -2,12 +2,14 @@ const app = {};
 
 const playerPool = [];
 let num = 1;
+let teamAmount = null;
 
 const $playerAdd = $(`#player-add`);
 const $newPlayer = $(`#new-player`);
 const $playerPoolList = $(`#player-pool ul`);
 const $teamGeneratorBtn = $(`button`);
 const $teams = $(`.teams`);
+const $playersPerTeam = $(`#team-amount`);
 
 app.init = () => {
     app.getNewPlayer();
@@ -40,15 +42,19 @@ app.populatePlayerPool = () => {
 app.createTeamArray = () => {
     $teamGeneratorBtn.on(`click`, (e) => {
         e.preventDefault();
-        if (!app[`teamArray${num}`]) {
-            app[`teamArray${num}`] = [];
-            app.assignPlayer(app[`teamArray${num}`]);
-        } else if (app[`teamArray${num}`] && app[`teamArray${num}`].length < 3) {
-            app.assignPlayer(app[`teamArray${num}`]);
-        } else {
-            num++;
-            app[`teamArray${num}`] = [];
-            app.assignPlayer(app[`teamArray${num}`]);
+        if (playerPool.length > 0) {
+            teamAmount = $($playersPerTeam).val();
+            $playersPerTeam.prop(`disabled`, true);
+            if (!app[`teamArray${num}`]) {
+                app[`teamArray${num}`] = [];
+                app.assignPlayer(app[`teamArray${num}`]);
+            } else if (app[`teamArray${num}`] && app[`teamArray${num}`].length < teamAmount) {
+                app.assignPlayer(app[`teamArray${num}`]);
+            } else {
+                num++;
+                app[`teamArray${num}`] = [];
+                app.assignPlayer(app[`teamArray${num}`]);
+            }
         }
     });
 }

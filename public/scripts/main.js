@@ -4,12 +4,14 @@ var app = {};
 
 var playerPool = [];
 var num = 1;
+var teamAmount = null;
 
 var $playerAdd = $("#player-add");
 var $newPlayer = $("#new-player");
 var $playerPoolList = $("#player-pool ul");
 var $teamGeneratorBtn = $("button");
 var $teams = $(".teams");
+var $playersPerTeam = $("#team-amount");
 
 app.init = function () {
     app.getNewPlayer();
@@ -40,15 +42,19 @@ app.populatePlayerPool = function () {
 app.createTeamArray = function () {
     $teamGeneratorBtn.on("click", function (e) {
         e.preventDefault();
-        if (!app["teamArray" + num]) {
-            app["teamArray" + num] = [];
-            app.assignPlayer(app["teamArray" + num]);
-        } else if (app["teamArray" + num] && app["teamArray" + num].length < 3) {
-            app.assignPlayer(app["teamArray" + num]);
-        } else {
-            num++;
-            app["teamArray" + num] = [];
-            app.assignPlayer(app["teamArray" + num]);
+        if (playerPool.length > 0) {
+            teamAmount = $($playersPerTeam).val();
+            $playersPerTeam.prop("disabled", true);
+            if (!app["teamArray" + num]) {
+                app["teamArray" + num] = [];
+                app.assignPlayer(app["teamArray" + num]);
+            } else if (app["teamArray" + num] && app["teamArray" + num].length < teamAmount) {
+                app.assignPlayer(app["teamArray" + num]);
+            } else {
+                num++;
+                app["teamArray" + num] = [];
+                app.assignPlayer(app["teamArray" + num]);
+            }
         }
     });
 };

@@ -149,6 +149,15 @@ button, input[type=submit] {
     -webkit-box-shadow: 5px 5px 5px 0px #033;
             box-shadow: 5px 5px 5px 0px #033; }
 
+select {
+  background: #999;
+  color: #033;
+  border: 1px solid #699;
+  padding: 5px; }
+  select:disabled {
+    background: #d0d0d0;
+    color: #ff4d4d; }
+
 h1, h2, h3 {
   color: #f33; }
 
