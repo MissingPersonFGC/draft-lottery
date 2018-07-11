@@ -78,7 +78,7 @@ app.populateTeams = function () {
         if (app["teamArray" + i]) {
             (function () {
                 var $teamArray = "team-array" + i;
-                $teams.append("<div class=\"" + $teamArray + "\"><h3>Team #" + i + "</h3><ul></ul></div>");
+                $teams.append("<div class=\"team-array " + $teamArray + "\"><h3>Team #" + i + "</h3><ul></ul></div>");
                 app["teamArray" + i].forEach(function (player) {
                     $("." + $teamArray + " ul").append("\n                    <li>" + player + "</li>\n                ");
                 });

@@ -77,7 +77,7 @@ app.populateTeams = () => {
     for (let i = 1; i < 101; i++) {
         if (app[`teamArray${i}`]) {
             const $teamArray = `team-array${i}`;
-            $teams.append(`<div class="${$teamArray}"><h3>Team #${i}</h3><ul></ul></div>`);
+            $teams.append(`<div class="team-array ${$teamArray}"><h3>Team #${i}</h3><ul></ul></div>`);
             app[`teamArray${i}`].forEach((player) => {
                 $(`.${$teamArray} ul`).append(`
                     <li>${player}</li>

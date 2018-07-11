@@ -185,4 +185,8 @@ main {
   main .teams {
     margin-top: 30px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); }
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px; }
+    main .teams .team-array {
+      border: 1px solid #f33;
+      padding-left: 15px; }
